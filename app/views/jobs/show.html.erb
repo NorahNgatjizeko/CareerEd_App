@@ -16,17 +16,15 @@
       <%= @job.description.html_safe %>
     </div>
 
-    <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-large is-fullwidth is-link" %>
-
   </div>
 
   <div class="column is-2 is-offset-1 has-text-centered">
 
     <% if !@job.avatar.file.nil? %>
-      <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered"), @job.url %>
+      <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.company_name, class: "has-text-centered"), @job.website %>
     <% end %>
 
-    <h5 class="is-5 has-text-centered"><%= link_to @job.job_author, @job.url %></h5>
+    <h5 class="is-5 has-text-centered"><%= link_to @job.company_name, @job.website %></h5>
 
     <div class="mt2 mb4">
     <%= link_to @job.url do %>
@@ -34,9 +32,7 @@
     <% end %>
     </div>
 
-    <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-fullwidth is-link" %>
-
-    <% if current_user.try(:admin) || job_author(@job) %>
+    <% if current_user.try(:admin) || company_name(@job) %>
       <ul class="pv3">
         <li class="pv1 f6">Admin controls: </li>
         <li class="pv1 inline-block">
