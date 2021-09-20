@@ -1,4 +1,4 @@
-# careerEd
+# CareerEd_App
 
 careerEd, an application where companies can post job vacancies and/or education courses they have.
 
