@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.create(job_id: params[:job_id])
     favorite.save
     flash[:success] = "Applied Job"
-    redirect_to jobs_path
+    redirect_to favorite.job, notice:'Applied Job'
   end
 
   def destroy

@@ -31,7 +31,7 @@
         <%= @job.favorites.count %> Cancel application
         <% end %>
       <% else %>
-        <%= link_to favorites_create_path(job_id: @job.id) , method: :POST do %>
+        <%= link_to favorites_path(job_id: @job.id) , method: :POST do %>
           <i class="fa fa-heart-o" aria-hidden="true"></i>
           <%= @job.favorites.count %>apply
         <% end %>
