@@ -11,6 +11,7 @@ user = User.new(
   name: "Admin user",
   email: "admin@mail.com",
   password: "password",
-  password_confirmation: "password"
+  password_confirmation: "password",
+  admin: true
 )
 user.save!

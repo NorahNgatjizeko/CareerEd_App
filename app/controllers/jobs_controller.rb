@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
   # GET /jobs or /jobs.json
   def index
     @jobs = Job.all.order("created_at desc")
@@ -22,27 +22,11 @@ class JobsController < ApplicationController
   # POST /jobs or /jobs.json
   def create
     @job = Job.new(job_params)
-      @job = current_user.id
-
-      if params[:back]
-  render :new
-else
-  if @Job.save
-  redirect_to jobs_path, notice: "The job was successfully created"
+    @job.user_id = current_user.id
+    if @job.save
+      redirect_to jobs_path, notice: "The job was successfully created"
     else
        render :new
-    end
-   end
- end
-
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: "Job was successfully created." }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
     end
   end
 
@@ -78,3 +62,4 @@ else
     def job_params
       params.require(:job).permit(:title, :description, :website, :job_type, :location, :company_name, :remote_ok, :avatar)
     end
+  end

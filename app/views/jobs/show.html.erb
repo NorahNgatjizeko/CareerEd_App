@@ -1,9 +1,7 @@
 <div class="columns pt4 pb7">
   <div class="column is-7 is-offset-1">
-
     <p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(@job.created_at) %> ago</p>
     <h1 class="title is-2"><%= @job.title %></h1>
-
     <ul class="list pb4">
       <li class="inline-block f6 pr2"><%= job_type(@job.job_type) %></li>
       <li class="inline-block f6 ph2"><i class="fa fa-pin"></i> <%= @job.location %></li>
@@ -11,39 +9,36 @@
         <li class="inline-block f6 ph2"><i class="fa fa-wifi"></i> Remote Job</li>
       <% end %>
     </ul>
-
     <div class="content text-serif f4">
       <%= @job.description.html_safe %>
     </div>
-
   </div>
-
   <div class="column is-2 is-offset-1 has-text-centered">
-
     <% if !@job.avatar.file.nil? %>
       <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.company_name, class: "has-text-centered"), @job.website %>
     <% end %>
-
     <h5 class="is-5 has-text-centered"><%= link_to @job.company_name, @job.website %></h5>
-
     <div class="mt2 mb4">
-    <%= link_to @job.url do %>
+    <%= link_to @job.website do %>
       <i class="fa fa-globe"></i>
     <% end %>
     </div>
 
-    <% if @job.favorited_by?(current_user) %>
-       <%= link_to job_favorite_path(@job), method: :DELETE do %>
-       <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-       <%= @job.favorites.count %>apply
-       <% end %>
-    <% else %>
-      <%= link_to job_favorites_path(@job) , method: :JOB do %>
-      <i class="fa fa-heart-o" aria-hidden="true"></i>
-      <%= @job.favorites.count %>apply
+    <% unless @job.user_id == current_user.id %>
+      <% if @favorite.present? %>
+        <%= link_to favorite_path(id: @favorite.id), method: :DELETE do %>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+        <%= @job.favorites.count %> Cancel application
+        <% end %>
+      <% else %>
+        <%= link_to favorites_create_path(job_id: @job.id) , method: :POST do %>
+          <i class="fa fa-heart-o" aria-hidden="true"></i>
+          <%= @job.favorites.count %>apply
+        <% end %>
+      <% end %>
     <% end %>
 
-    <% if current_user.try(:admin) || company_name(@job) %>
+    <% if current_user.admin %>
       <ul class="pv3">
         <li class="pv1 f6">Admin controls: </li>
         <li class="pv1 inline-block">
@@ -54,6 +49,11 @@
           <%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
       </ul>
     <% end %>
+    <ul class="pv3">
+      <li class="pv1 inline-block">
+        <%= link_to 'Back to All Jobs', jobs_path, class: 'button is-small is-link is-outlined' %>
+      </li>
+    </ul>
 
   </div>
 </div>
