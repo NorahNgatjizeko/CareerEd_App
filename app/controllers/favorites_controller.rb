@@ -1,16 +1,14 @@
 class FavoritesController < ApplicationController
   def create
-    @job = Job.find(params[:job_id])　
-    favorite = @job.favorites.new(user_id: current_user.id)　
+    favorite = current_user.favorites.create(job_id: params[:job_id])
     favorite.save
     flash[:success] = "Applied Job"
-    redirect_to request.referer
+    redirect_to jobs_path
   end
 
   def destroy
-    @job = Job.find(params[:job_id])　
-    favorite = current_user.favorites.find_by(job_id: @job.id)　②
+    favorite = current_user.favorites.find_by(id: params[:id]).destroy　
     favorite.destroy
-    redirect_to request.referer
+    redirect_to jobs_path
   end
 end

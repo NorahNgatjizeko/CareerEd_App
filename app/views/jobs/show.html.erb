@@ -32,6 +32,17 @@
     <% end %>
     </div>
 
+    <% if @job.favorited_by?(current_user) %>
+       <%= link_to job_favorite_path(@job), method: :DELETE do %>
+       <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+       <%= @job.favorites.count %>apply
+       <% end %>
+    <% else %>
+      <%= link_to job_favorites_path(@job) , method: :JOB do %>
+      <i class="fa fa-heart-o" aria-hidden="true"></i>
+      <%= @job.favorites.count %>apply
+    <% end %>
+
     <% if current_user.try(:admin) || company_name(@job) %>
       <ul class="pv3">
         <li class="pv1 f6">Admin controls: </li>
@@ -43,15 +54,6 @@
           <%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
       </ul>
     <% end %>
-    <% if @job.favorited_by?(current_user) %>
-       <%= link_to job_favorite_path(@job), method: :DELETE do %>
-       <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-       <%= @job.favorites.count %>apply
-       <% end %>
-    <% else %>
-      <%= link_to job_favorites_path(@job) , method: :JOB do %>
-      <i class="fa fa-heart-o" aria-hidden="true"></i>
-      <%= @job.favorites.count %>apply
-    <% end %>
+
   </div>
 </div>
