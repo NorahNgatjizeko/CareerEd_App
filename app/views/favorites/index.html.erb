@@ -1,0 +1,17 @@
+<h1>Job Application list</h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Content</th>
+    <th>Job</th>
+  </tr>
+  <tr>
+    <% @favorites.each do |favorite| %>
+    <td><%= favorite.job.user.name %></td>
+    <td><%= favorite.job.content %></td>
+  </tr>
+<% end %>
+</table>
+
+  <%= link_to 'Back', jobs_path %>

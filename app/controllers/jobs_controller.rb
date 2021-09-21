@@ -22,13 +22,13 @@ class JobsController < ApplicationController
   # POST /jobs or /jobs.json
   def create
     @job = Job.new(job_params)
-      @job.user = current_user.id
+      @job = current_user.id
 
       if params[:back]
   render :new
 else
   if @Job.save
-  redirect_to tasks_path, notice: "The job was successfully created"
+  redirect_to jobs_path, notice: "The job was successfully created"
     else
        render :new
     end
