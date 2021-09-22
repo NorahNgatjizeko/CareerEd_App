@@ -8,6 +8,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/1 or /jobs/1.json
   def show
+    @favorite = current_user.favorites.find_by(job_id: @job.id)
   end
 
   # GET /jobs/new

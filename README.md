@@ -1,6 +1,6 @@
 # CareerEd_App
 
-careerEd, an application where companies can post job vacancies and/or education courses they have.
+CareerEd_App is an application where companies can post job vacancies and/or education courses they have.
 
 ## Requirement Definition
 
