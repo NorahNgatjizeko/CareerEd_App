@@ -7,8 +7,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = current_user.favorites.find_by(id: params[:id]).destroy　
-    favorite.destroy
-    redirect_to jobs_path
+    favorite = current_user.favorites.find_by(id: params[:id]).destroy!
+    redirect_to jobs_path, notice: 'Application deleted'
   end
 end
