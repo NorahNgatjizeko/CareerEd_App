@@ -8,7 +8,7 @@
 
 user = User.new(
   name: "Admin user",
-  email: "admin@gmail.com",
+  email: "admin@mail.com",
   password: "password",
   password_confirmation: "password",
   admin: true
@@ -21,15 +21,9 @@ User.create!(name: 'GuestUser1',
              created_at: Time.zone.now,
              updated_at: Time.zone.now,
              admin: true)
-User.create!(name: 'Guest UserAdmin',
-             email: 'guestadmin@example2.com',
-             password: '12345678',
-             password_confirmation: '12345678',
-             created_at: Time.zone.now,
-             updated_at: Time.zone.now,
-             admin: true)
+
 User.create!(name: 'Guest User',
-             email: 'gues1t@example3.com',
+             email: 'guestuser@example.com',
              password: '12345678',
              password_confirmation: '12345678',
              created_at: Time.zone.now,

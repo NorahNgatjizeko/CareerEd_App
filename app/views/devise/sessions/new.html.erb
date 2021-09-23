@@ -26,14 +26,14 @@
 				  <%= f.button :submit, "Log in", class:"button is-outlined is-medium" %>
 				<% end %>
 				<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |g| %>
-  <%= g.hidden_field :email, value: '' %>
+  <%= g.hidden_field :email, value: 'gues1t@example.com' %>
   <%= g.hidden_field :password, value: '12345678' %>
   <div class="mb-3">
     <%= g.submit 'Guest login', class: 'btn btn-warning' %>
    </div>
 <% end %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |g| %>
-      <%= g.hidden_field :email, value: '' %>
+      <%= g.hidden_field :email, value: 'guest1234@example.com' %>
       <%= g.hidden_field :password, value: '12345678' %>
       <div class="mb-3">
         <%= g.submit 'Admin_Guestlogin', class: 'btn btn-warning' %>
