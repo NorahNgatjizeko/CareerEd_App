@@ -14,18 +14,3 @@ user = User.new(
   admin: true
 )
 user.save!
-User.create!(name: 'GuestUser1',
-             email: 'guest1234@example1.com',
-             password: '12345678',
-             password_confirmation: '12345678',
-             created_at: Time.zone.now,
-             updated_at: Time.zone.now,
-             admin: true)
-
-User.create!(name: 'Guest User',
-             email: 'guestuser@example.com',
-             password: '12345678',
-             password_confirmation: '12345678',
-             created_at: Time.zone.now,
-             updated_at: Time.zone.now,
-             guest: true)
