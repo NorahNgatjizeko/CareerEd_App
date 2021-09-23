@@ -8,6 +8,19 @@ class JobsController < ApplicationController
     else
       @jobs = Job.all.order("created_at desc")
     end
+    @jobs = if params[:term]
+      Job.where('job_type LIKE ?', "%#{params[:term]}%")
+    else
+      @jobs = Job.all
+end
+            @search = Job.ransack(params[:q])
+            if params[:q]
+            @jobs = @search.result
+          elsif params[:sort_job_type]
+            @jobs = Job.all.order('job_type')
+          elsif params[:sort_job_type]
+            @jobs=jobs = Job.all.order('job_type DESC')
+        end
   end
 
   # GET /jobs/1 or /jobs/1.json
@@ -23,7 +36,7 @@ class JobsController < ApplicationController
   # GET /jobs/1/edit
   def edit
   end
-  
+
   # POST /jobs or /jobs.json
   def create
     @job = Job.new(job_params)

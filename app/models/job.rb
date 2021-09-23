@@ -9,4 +9,11 @@ class Job < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   JOB_TYPES = ["Full-time", "Part-time", "Contract", "Freelance"]
+  def self.search(term)
+    if term
+      where('job_type LIKE ?', "%#{term}%")
+    else
+      order('id desc')
+    end
+  end
 end

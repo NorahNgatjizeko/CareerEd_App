@@ -1,3 +1,8 @@
+<h1 class="head">List of Jobs</h1>
+<%= form_tag(jobs_path, method: :get,style:'') do %>
+  <%= text_field_tag :term, params[:term],placeholder:'  search by job type or or name' %>
+  <%= submit_tag 'Search', name: nil %>
+ <% end %><br>
 <div class="container">
 
 <div class="columns border-top">
@@ -46,4 +51,4 @@
 
 </div>
 </div>
-<%= link_to 'Sort by type', jobs_path(sort_type: 'true'), class: 'ui blue button inverted'%>
+<%= link_to 'Sort by job_type', jobs_path(sort_job_type: 'true'), class: 'ui blue button inverted'%>
