@@ -14,7 +14,7 @@ module JobsHelper
     end
   end
 
-  def job_author(job)
+  def company_name(job)
     user_signed_in? && current_user.id == job.user_id
   end
 end
