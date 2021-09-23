@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.new(
-  id: 2,
   name: "Admin user",
   email: "admin@mail.com",
   password: "password",
@@ -15,3 +14,24 @@ user = User.new(
   admin: true
 )
 user.save!
+User.create!(name: 'GuestUser1',
+             email: 'guest1234@example.com',
+             password: '12345678',
+             password_confirmation: '12345678',
+             created_at: Time.zone.now,
+             updated_at: Time.zone.now,
+             admin: true)
+User.create!(name: 'Guest UserAdmin',
+             email: 'guestadmin@example.com',
+             password: '12345678',
+             password_confirmation: '12345678',
+             created_at: Time.zone.now,
+             updated_at: Time.zone.now,
+             admin: true)
+User.create!(name: 'Guest User',
+             email: 'gues1t@example.com',
+             password: '12345678',
+             password_confirmation: '12345678',
+             created_at: Time.zone.now,
+             updated_at: Time.zone.now,
+             guest: true)
