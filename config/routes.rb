@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users
+
   resources :jobs do
     resources :employments, only: [:create, :destroy]
   end

@@ -1,6 +1,7 @@
 class EmploymentsController < ApplicationController
   def index
     @employments=Employment.all
+    @employments = current_user.employments
   end
   def create
     employment = current_user.employments.create(job_id: params[:job_id])

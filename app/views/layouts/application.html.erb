@@ -47,10 +47,17 @@
               <p class="control">
                 <%= link_to 'List Of Jobs', jobs_path, class: "navbar-item button is-primary is-rounded" %>
               </p>
+              <a>
+                <%= link_to "admin", rails_admin_path, class: "navbar-item button is-primary is-rounded" %>
+              </a>
               <% else %>
+              <p class="control">
+                <%= link_to 'Applied_jobs', employments_path, class: "navbar-item button is-primary is-rounded" %>
+              </p>
               <p class="control">
                 <%= link_to 'List Of Jobs', jobs_path, class: "navbar-item button is-primary is-rounded" %>
               </p>
+
              <% end %>
 
             <% if user_signed_in? %>

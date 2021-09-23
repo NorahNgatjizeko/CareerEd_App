@@ -49,7 +49,7 @@ RSpec.describe 'Job', type: :system do
        fill_in 'Password', with: @admin.password
        click_button "Log in"
        job = FactoryBot.create(:job, title: 'job2', description: "example2")
-       visit job_path(job.id)
+       visit jobs_path(job.id)
        expect(page).to have_content 'job2'
      end
    end
