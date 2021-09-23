@@ -11,16 +11,7 @@ class User < ApplicationRecord
                        uniqueness: true
                       #  format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
   validates :password, presence: true, length: { minimum: 6 }, on: :create
-  def self.guest
-    find_or_create_by!(name: 'The guests', email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-    end
-  end
-  def new_guest
-    user = User.guest
-    sign_in user
-    redirect_to root_path, notice: 'You have logged in as a guest user.'
-  end
+
   def self.admin_guest
     find_or_create_by!(email: 'admin_guest@example.com') do |user|
       user.name = 'Guest administrator'
