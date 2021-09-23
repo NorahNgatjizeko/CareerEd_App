@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :employments, only: [:create, :destroy, :index]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: 'users/registrations' }
-end
   resources :users
   resources :jobs do
     resources :employments, only: [:create, :destroy]
