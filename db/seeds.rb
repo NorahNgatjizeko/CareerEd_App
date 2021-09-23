@@ -8,7 +8,7 @@
 
 user = User.new(
   name: "Admin user",
-  email: "admin@wmail.com",
+  email: "admin@hotmail.com",
   password: "password",
   password_confirmation: "password",
   admin: true
