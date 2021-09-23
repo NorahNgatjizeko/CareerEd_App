@@ -51,9 +51,7 @@
                 <%= link_to "admin", rails_admin_path, class: "navbar-item button is-primary is-rounded" %>
               </a>
               <% else %>
-              <p class="control">
-                <%= link_to 'Applied_jobs', employments_path, class: "navbar-item button is-primary is-rounded" %>
-              </p>
+
               <p class="control">
                 <%= link_to 'List Of Jobs', jobs_path, class: "navbar-item button is-primary is-rounded" %>
               </p>
@@ -68,6 +66,9 @@
                   <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
                   <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
                 </div>
+                <p class="control">
+                  <%= link_to 'Applied_jobs', employments_path, class: "navbar-item button is-primary is-rounded" %>
+                </p>
               </div>
             <% else %>
             <p class="control">
