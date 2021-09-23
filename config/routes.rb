@@ -2,7 +2,7 @@ Rails.application.routes.draw do
    resources :favorites, only: [:create, :destroy, :index]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :users 
+  resources :users
   resources :jobs do
     resources :favorites, only: [:create, :destroy]
   end
