@@ -3,7 +3,11 @@ class JobsController < ApplicationController
   before_action :authenticate_user!
   # GET /jobs or /jobs.json
   def index
-    @jobs = Job.all.order("created_at desc")
+    if(params.has_key?(:job_type))
+      @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
+    else
+      @jobs = Job.all.order("created_at desc")
+    end
   end
 
   # GET /jobs/1 or /jobs/1.json
